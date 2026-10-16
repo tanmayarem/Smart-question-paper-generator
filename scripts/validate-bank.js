@@ -1,14 +1,14 @@
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const scriptDir = path.dirname(fileURLToPath(import.meta.url));
-const defaultBankPath = path.join(scriptDir, "..", "src", "questions.json");
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const bankPath = path.join(__dirname, "..", "src", "questions.json");
 
-export const TOPICS = ["Biology", "Chemistry", "Physics"];
-export const DIFFICULTIES = ["Easy", "Medium", "Hard"];
-export const TYPES = ["MCQ", "Short Answer", "Long Answer"];
-export const REQUIRED_FIELDS = [
+const TOPICS = ["Biology", "Chemistry", "Physics"];
+const DIFFICULTIES = ["Easy", "Medium", "Hard"];
+const TYPES = ["MCQ", "Short Answer", "Long Answer"];
+const REQUIRED = [
   "id",
   "subject",
   "topic",
@@ -20,112 +20,63 @@ export const REQUIRED_FIELDS = [
   "answer",
 ];
 
-export function validateBank(bank) {
-  if (!Array.isArray(bank)) return ["Bank must be a JSON array."];
+const bank = JSON.parse(fs.readFileSync(bankPath, "utf8"));
+let errors = 0;
 
-  const errors = [];
-  const ids = new Set();
-  for (const question of bank) {
-    const id = question && typeof question.id === "string" ? question.id : "?";
-    if (!question || typeof question !== "object" || Array.isArray(question)) {
-      errors.push("Question must be a JSON object.");
-      continue;
-    }
-    for (const key of REQUIRED_FIELDS) {
-      if (!(key in question)) errors.push(`${id}: missing field "${key}"`);
-    }
-    const unexpectedFields = Object.keys(question).filter((key) => !REQUIRED_FIELDS.includes(key));
-    if (unexpectedFields.length) {
-      errors.push(`${id}: unexpected field(s): ${unexpectedFields.join(", ")}`);
-    }
-    if (typeof question.id !== "string" || !question.id.trim()) {
-      errors.push(`${id}: id must be a non-empty string`);
-    } else if (ids.has(question.id)) {
-      errors.push(`Duplicate id ${question.id}`);
-    } else {
-      ids.add(question.id);
-    }
-    if (question.subject !== "Science") errors.push(`${id}: subject must be Science`);
-    if (!TOPICS.includes(question.topic)) errors.push(`${id}: invalid topic ${question.topic}`);
-    if (!DIFFICULTIES.includes(question.difficulty)) {
-      errors.push(`${id}: invalid difficulty`);
-    }
-    if (!TYPES.includes(question.type)) errors.push(`${id}: invalid type`);
-    if (!Number.isInteger(question.marks)) errors.push(`${id}: marks must be a whole number`);
-
-    if (question.type === "MCQ") {
-      if (question.marks !== 1) errors.push(`${id}: MCQ must be 1 mark`);
-      if (
-        !Array.isArray(question.options) ||
-        question.options.length !== 4 ||
-        question.options.some((option) => typeof option !== "string" || !option.trim())
-      ) {
-        errors.push(`${id}: MCQ must have exactly 4 non-empty text options`);
-      } else if (!question.options.includes(question.answer)) {
-        errors.push(`${id}: MCQ answer must be one of the options`);
-      }
-    } else {
-      if (question.options !== null) errors.push(`${id}: non-MCQ options must be null`);
-      if (
-        question.type === "Short Answer" &&
-        (!Number.isInteger(question.marks) || question.marks < 2 || question.marks > 3)
-      ) {
-        errors.push(`${id}: Short Answer marks must be 2–3`);
-      }
-      if (
-        question.type === "Long Answer" &&
-        (!Number.isInteger(question.marks) || question.marks < 4 || question.marks > 5)
-      ) {
-        errors.push(`${id}: Long Answer marks must be 4–5`);
-      }
-    }
-    if (typeof question.prompt !== "string" || !question.prompt.trim()) {
-      errors.push(`${id}: empty prompt`);
-    }
-    if (typeof question.answer !== "string" || !question.answer.trim()) {
-      errors.push(`${id}: empty answer`);
-    }
-  }
-  return errors;
+function fail(msg) {
+  console.error(`ERROR: ${msg}`);
+  errors += 1;
 }
 
-function countBy(bank, key) {
-  return bank.reduce((counts, question) => {
-    counts[question[key]] = (counts[question[key]] || 0) + 1;
-    return counts;
-  }, {});
-}
+if (!Array.isArray(bank)) fail("Bank must be a JSON array.");
 
-function validateFile(filePath) {
-  let bank;
-  try {
-    bank = JSON.parse(fs.readFileSync(filePath, "utf8"));
-  } catch (error) {
-    console.error(`Could not read valid JSON from ${filePath}: ${error.message}`);
-    process.exitCode = 1;
-    return;
+const ids = new Set();
+for (const q of bank) {
+  for (const key of REQUIRED) {
+    if (!(key in q)) fail(`${q.id ?? "?"}: missing field "${key}"`);
   }
+  if (q.subject !== "Science") fail(`${q.id}: subject must be Science`);
+  if (!TOPICS.includes(q.topic)) fail(`${q.id}: invalid topic ${q.topic}`);
+  if (!DIFFICULTIES.includes(q.difficulty)) fail(`${q.id}: invalid difficulty`);
+  if (!TYPES.includes(q.type)) fail(`${q.id}: invalid type`);
+  if (ids.has(q.id)) fail(`Duplicate id ${q.id}`);
+  ids.add(q.id);
 
-  const errors = validateBank(bank);
-  if (errors.length) {
-    errors.forEach((error) => console.error(`ERROR: ${error}`));
-    console.error(`\nValidation failed with ${errors.length} error(s).`);
-    process.exitCode = 1;
-    return;
-  }
-
-  console.log(`Questions: ${bank.length}`);
-  console.log("By topic:", countBy(bank, "topic"));
-  console.log("By difficulty:", countBy(bank, "difficulty"));
-  console.log("By type:", countBy(bank, "type"));
-  console.log("\nValidation passed.");
-}
-
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  if (process.argv.length > 3) {
-    console.error("Usage: node scripts/validate-bank.js [path-to-bank.json]");
-    process.exitCode = 2;
+  if (q.type === "MCQ") {
+    if (q.marks !== 1) fail(`${q.id}: MCQ must be 1 mark`);
+    if (!Array.isArray(q.options) || q.options.length !== 4) {
+      fail(`${q.id}: MCQ must have exactly 4 options`);
+    } else if (!q.options.includes(q.answer)) {
+      fail(`${q.id}: MCQ answer must be one of the options`);
+    }
   } else {
-    validateFile(process.argv[2] ? path.resolve(process.argv[2]) : defaultBankPath);
+    if (q.options !== null) fail(`${q.id}: non-MCQ options must be null`);
+    if (q.type === "Short Answer" && (q.marks < 2 || q.marks > 3)) {
+      fail(`${q.id}: Short Answer marks must be 2–3`);
+    }
+    if (q.type === "Long Answer" && (q.marks < 4 || q.marks > 5)) {
+      fail(`${q.id}: Long Answer marks must be 4–5`);
+    }
   }
+  if (typeof q.prompt !== "string" || !q.prompt.trim()) fail(`${q.id}: empty prompt`);
+  if (typeof q.answer !== "string" || !q.answer.trim()) fail(`${q.id}: empty answer`);
 }
+
+function countBy(key) {
+  const out = {};
+  for (const q of bank) {
+    out[q[key]] = (out[q[key]] || 0) + 1;
+  }
+  return out;
+}
+
+console.log(`Questions: ${bank.length}`);
+console.log("By topic:", countBy("topic"));
+console.log("By difficulty:", countBy("difficulty"));
+console.log("By type:", countBy("type"));
+
+if (errors) {
+  console.error(`\nValidation failed with ${errors} error(s).`);
+  process.exit(1);
+}
+console.log("\nValidation passed.");

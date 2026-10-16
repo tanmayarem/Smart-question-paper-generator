@@ -11,8 +11,6 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "validate:bank": "node scripts/validate-bank.js",
-    "draft-questions": "node scripts/draft-questions.js",
-    "approve-questions": "node scripts/approve.js",
     "sample-paper": "node scripts/generate-sample-paper.mjs"
   },
   "dependencies": {

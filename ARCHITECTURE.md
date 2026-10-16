@@ -14,8 +14,6 @@ Pure engine (src/engine.js)     Question bank (src/questions.json)
 
 The UI never imports the engine. The API and Vitest engine tests share the same module so selection rules stay in one place. Generated papers remain in the browser session; there is no persistence layer.
 
-The optional question workflow drafts candidates through the OpenAI API into ignored `data/pending.json`. `scripts/approve.js` handles human review, and runs `scripts/validate-bank.js` on the full proposed bank before appending an approved question.
-
 ## Engine
 
 - `validateConfig` — totals 5–60, mixes sum to 100% per dimension

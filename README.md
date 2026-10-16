@@ -32,19 +32,9 @@ npm run build
 
 Open http://localhost:5173. Use **Print paper** to print or export a PDF.
 
-To draft questions, set your API key in the environment (PowerShell example), then run:
-
-```powershell
-$env:OPENAI_API_KEY = "your-api-key"
-npm run draft-questions -- 3 Biology Medium MCQ
-npm run approve-questions
-```
-
-The script uses OpenAI's API (`gpt-4o-mini` by default; set `OPENAI_MODEL` to change it). Drafts go only to ignored `data/pending.json`. The CLI lets me approve, edit, reject, or skip each one; approval validates the complete proposed bank before adding it. I review drafts for accuracy and syllabus fit.
-
 ## Tech stack and architecture
 
-Vite, vanilla JavaScript/CSS, Node, Express, and Vitest. The browser calls `/api/*`; `server/createApp.js` uses `src/engine.js` and `src/questions.json`.
+I use Vite, vanilla JavaScript and CSS, Node, Express, and Vitest. The browser calls `/api/*`; `server/createApp.js` uses the shared engine in `src/engine.js` and the bank in `src/questions.json`.
 
 | Method | Path | Purpose |
 |---|---|---|
@@ -54,4 +44,4 @@ Vite, vanilla JavaScript/CSS, Node, Express, and Vitest. The browser calls `/api
 
 ## AI usage disclosure
 
-**AI drafts, human approves, engine selects deterministically.** AI only drafts candidates; I review them, and the validator gates bank updates.
+I wrote the question text manually; teachers should review it before use. I used Cursor/LLM assistance for code structure, tests, and documentation—not for unverified bulk question generation.

@@ -1,5 +1,4 @@
 node_modules/
 dist/
 data/papers.json
-data/pending.json
 .env
