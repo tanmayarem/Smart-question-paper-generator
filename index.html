@@ -1,50 +1,80 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PaperPilot — Smart Question Paper Generator</title>
-<style>
-:root{--ink:#172033;--muted:#68738a;--line:#dfe5ee;--bg:#f5f7fb;--card:#fff;--accent:#3859d6;--accent2:#eaf0ff;--green:#18794e;--amber:#9a5b00;--red:#b42318}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{background:#111b32;color:white;padding:24px max(20px,calc((100vw - 1120px)/2));display:flex;justify-content:space-between;gap:20px;align-items:center}
-.brand{font-weight:800;font-size:20px;letter-spacing:-.4px}.brand span{color:#a9baff}.subhead{color:#d3daea;font-size:13px;margin-top:3px}.pill{border:1px solid #56627d;border-radius:999px;padding:5px 10px;font-size:12px;white-space:nowrap}
-main{max-width:1120px;margin:24px auto;padding:0 18px 48px;display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 5px 20px #17203308}.panel h2{font-size:17px;margin:0 0 4px}.hint{font-size:12px;color:var(--muted);margin:0 0 18px}
-label{display:block;font-weight:650;font-size:13px;margin:15px 0 6px}input[type=number],select{width:100%;border:1px solid #cfd7e4;border-radius:9px;padding:10px 11px;font:inherit;background:white;color:var(--ink)}
-.mixrow{display:grid;grid-template-columns:1fr 74px;align-items:center;gap:12px;margin:8px 0}.mixrow label{font-weight:500;margin:0}.mixrow input{padding:7px 8px;text-align:right}.group-title{display:flex;justify-content:space-between;align-items:center;margin-top:19px;font-size:13px;font-weight:800}.sum{font-size:11px;color:var(--muted);font-weight:600}.sum.bad{color:var(--red)}
-.btn{border:0;border-radius:10px;padding:11px 14px;font-weight:750;font-size:14px;cursor:pointer;transition:.15s}.btn.primary{background:var(--accent);color:white;width:100%;margin-top:20px}.btn.primary:hover{background:#2948be}.btn.secondary{background:var(--accent2);color:#2948be}.btn.ghost{background:#f0f2f7;color:#33405b}.btn:disabled{opacity:.5;cursor:not-allowed}
-.topline{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}.eyebrow{text-transform:uppercase;letter-spacing:1px;font-size:10px;color:var(--accent);font-weight:850}.title{font-size:25px;letter-spacing:-.7px;margin:2px 0}.desc{margin:0;color:var(--muted);font-size:13px}.actions{display:flex;gap:8px;flex-wrap:wrap}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.metric{border:1px solid var(--line);border-radius:12px;padding:13px}.metric .big{font-size:23px;font-weight:800;letter-spacing:-.5px}.metric .small{color:var(--muted);font-size:11px}
-.notice{border-radius:10px;padding:12px 14px;font-size:13px;margin:12px 0}.notice.ok{background:#eaf7ef;color:#155c39}.notice.warn{background:#fff5e5;color:#754600}.notice.error{background:#fff0ee;color:#8e2018}
-.breakdowns{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}.breakdown{border:1px solid var(--line);border-radius:12px;padding:13px;min-width:0}.breakdown h3{font-size:12px;margin:0 0 10px}.brow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;font-size:11px;margin:7px 0}.track{height:5px;background:#edf0f5;border-radius:8px;overflow:hidden;grid-column:1/-1}.fill{height:100%;background:var(--accent);border-radius:8px}.diff{color:var(--muted)}
-.paperhead{border-top:1px solid var(--line);padding-top:18px;margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:10px}.paperhead h2{margin:0;font-size:18px}.question{border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0;background:#fff}.qtop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.qnum{font-size:12px;font-weight:800;color:var(--muted);min-width:28px}.qtext{font-weight:650;flex:1}.marks{white-space:nowrap;font-size:12px;font-weight:800;background:#f1f3f8;padding:4px 7px;border-radius:7px}.tags{display:flex;flex-wrap:wrap;gap:5px;margin:9px 0 0 28px}.tag{background:#f1f4fa;color:#526078;border-radius:6px;padding:3px 6px;font-size:10px}.opts{margin:10px 0 0 48px;padding-left:16px;font-size:13px}.qbottom{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:10px 0 0 28px}.answer{font-size:12px;color:#3b4961;background:#f7f9fc;border-left:3px solid #a8b6d9;padding:8px 10px;margin:10px 0 0 28px}.swap{font-size:11px;border:1px solid #d6ddec;background:#fff;border-radius:7px;padding:5px 8px;cursor:pointer;color:#33405b}.swap:hover{border-color:var(--accent);color:var(--accent)}.empty{padding:40px 16px;text-align:center;color:var(--muted)}.foot{font-size:11px;color:var(--muted);margin-top:18px}.hide{display:none!important}
-@media(max-width:800px){main{grid-template-columns:1fr;margin-top:14px}header{padding:18px}.breakdowns{grid-template-columns:1fr}.metrics{gap:7px}.metric{padding:10px}.metric .big{font-size:20px}}
-@media print{body{background:white}header,.controls,.actions,.swap,.paperhead .btn,.foot{display:none!important}main{display:block;max-width:none;margin:0;padding:0}.panel{box-shadow:none;border:0;padding:0}.question{break-inside:avoid}.paperpanel{display:block!important}.breakdowns,.metrics{break-inside:avoid}.title{font-size:22px}}
-</style>
-</head>
-<body>
-<header><div><div class="brand">Paper<span>Pilot</span></div><div class="subhead">Constraint-aware Science question paper generator</div></div><div class="pill">MVP · Curated question bank · No AI dependency</div></header>
-<main>
-<section class="panel controls">
-<h2>Paper settings</h2><p class="hint">Mix percentages refer to the share of total marks, not the number of questions.</p>
-<label for="total">Total marks</label><input id="total" type="number" min="5" max="60" step="1" value="20">
-<label for="level">Level</label><select id="level"><option>General school Science</option></select>
-<div class="group-title"><span>Difficulty mix</span><span class="sum" id="sum-difficulty">100%</span></div>
-<div id="difficulty-mix"></div>
-<div class="group-title"><span>Topic weighting</span><span class="sum" id="sum-topic">100%</span></div>
-<div id="topic-mix"></div>
-<div class="group-title"><span>Question-type mix</span><span class="sum" id="sum-type">100%</span></div>
-<div id="type-mix"></div>
-<button class="btn primary" id="generate">Generate paper</button>
-<p class="foot">This demo uses a small illustrative bank. Review the question wording, syllabus fit and answer key before classroom use.</p>
-</section>
-<section class="panel paperpanel">
-<div class="topline"><div><div class="eyebrow">Generated assessment</div><h1 class="title">Science question paper</h1><p class="desc" id="paper-subtitle">Set your constraints and generate a paper.</p></div><div class="actions"><button class="btn secondary" id="answers">Show answers</button><button class="btn ghost" id="print">Print</button></div></div>
-<div id="status"></div><div id="metrics" class="metrics"></div><div id="breakdowns" class="breakdowns"></div>
-<div class="paperhead"><h2>Question paper</h2><button class="btn ghost" id="regen">Regenerate paper</button></div>
-<div id="questions"><div class="empty">Your generated questions will appear here.</div></div>
-<p class="foot">Selection is deterministic in its constraints but uses randomized restarts to search for a good-fit combination. The tool reports the achieved mix; it does not claim exact satisfaction when the bank cannot support it.</p>
-</section>
-</main>
-<script src="app.js"></script>
-</body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PaperPilot — Smart Question Paper Generator</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <div class="brand">Paper<span>Pilot</span></div>
+        <div class="subhead">Constraint-aware Science question paper generator</div>
+      </div>
+      <div class="pill">Class IX–X Science · Curated bank</div>
+    </header>
+    <main>
+      <section class="panel controls">
+        <h2>Paper settings</h2>
+        <p class="hint">Mix percentages are shares of total marks, not question counts.</p>
+        <label for="total">Total marks</label>
+        <input id="total" type="number" min="5" max="60" step="1" value="20" />
+        <label for="exam-name">Exam name</label>
+        <input id="exam-name" type="text" value="End-of-Term Examination" />
+        <label for="class-name">Class</label>
+        <select id="class-name">
+          <option>Class IX</option>
+          <option selected>Class IX–X</option>
+          <option>Class X</option>
+        </select>
+        <div class="group-title">
+          <span>Difficulty mix</span><span class="sum" id="sum-difficulty">100%</span>
+        </div>
+        <div id="difficulty-mix"></div>
+        <div class="group-title">
+          <span>Topic weighting</span><span class="sum" id="sum-topic">100%</span>
+        </div>
+        <div id="topic-mix"></div>
+        <div class="group-title">
+          <span>Question-type mix</span><span class="sum" id="sum-type">100%</span>
+        </div>
+        <div id="type-mix"></div>
+        <button class="btn primary" id="generate">Generate paper</button>
+        <p class="foot screen-only">
+          Review wording and answer guides before classroom use. Generation uses a fixed seed per session unless you regenerate.
+        </p>
+      </section>
+      <section class="panel paperpanel">
+        <div class="topline screen-only">
+          <div>
+            <div class="eyebrow">Generated assessment</div>
+            <h1 class="title">Science question paper</h1>
+            <p class="desc" id="paper-subtitle">Set constraints and generate a paper.</p>
+          </div>
+          <div class="actions">
+            <button class="btn secondary" id="answers">Show answer key</button>
+            <button class="btn ghost" id="print">Print paper</button>
+            <button class="btn ghost" id="save">Save paper</button>
+          </div>
+        </div>
+        <div id="status"></div>
+        <div id="conflicts" class="conflicts"></div>
+        <div id="metrics" class="metrics screen-only"></div>
+        <div id="breakdowns" class="breakdowns screen-only"></div>
+        <div class="paperhead screen-only">
+          <h2>Question paper preview</h2>
+          <button class="btn ghost" id="regen">Regenerate</button>
+        </div>
+        <div id="exam-sheet" class="exam-sheet">
+          <div class="empty">Your generated exam paper will appear here.</div>
+        </div>
+        <div id="answer-key" class="answer-key hide print-show"></div>
+        <p class="foot screen-only">
+          Swap replaces one question while keeping marks and other items fixed when the bank allows it.
+        </p>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -74,6 +74,12 @@ describe("generatePaper", () => {
     expect(result.error).toMatch(/add up to 100%/i);
   });
 
+  it("(c2) fractional totals are rejected instead of silently rounded", () => {
+    const validation = validateConfig({ ...defaultConfig, total: 20.5 });
+    expect(validation.valid).toBe(false);
+    expect(validation.error).toMatch(/whole number/i);
+  });
+
   it("(d) infeasible 100% Hard Biology MCQ at 40 marks reports conflicts and honest total", () => {
     const config = {
       total: 40,
@@ -108,6 +114,25 @@ describe("generatePaper", () => {
       expect(afterIds).toContain(id);
     }
     expect(afterIds.filter((id) => id === swapId).length).toBe(0);
+  });
+
+  it("(e2) swap never selects the question being replaced as its own replacement", () => {
+    const original = {
+      id: "original",
+      topic: "Biology",
+      difficulty: "Easy",
+      type: "Short Answer",
+      marks: 2,
+    };
+    const fallback = {
+      ...original,
+      id: "fallback",
+      topic: "Physics",
+    };
+    const result = swapQuestion([original, fallback], [original], defaultConfig, original.id);
+    expect(result.swapped).toBe(true);
+    expect(result.toId).toBe("fallback");
+    expect(result.swapLevel).toBe("type");
   });
 
   it("(f) no duplicate questions in generated paper", () => {

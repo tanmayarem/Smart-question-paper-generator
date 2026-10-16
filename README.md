@@ -1,58 +1,55 @@
-# PaperPilot — Smart Question Paper Generator (MVP)
+# PaperPilot
 
-A small, browser-only prototype for generating a school-level Science question paper from teacher-defined constraints.
+I built PaperPilot to make printable Science exams from a curated question bank. I use rules, not AI, to select questions so marks and constraints stay visible and testable.
 
-## Run it
-1. Download/unzip the project.
-2. Open `index.html` in a modern browser. No build step, API key, package install, or backend is required.
-3. Edit the marks and mix percentages, then choose **Generate paper**.
-4. Use **Show answers** to reveal the answer guide, **Print** for a print-friendly view, and **Swap** to replace one question without rebuilding the rest.
+## Approach and why
 
-For a local server, run `python -m http.server 8000` in this directory and open `http://localhost:8000`.
+The engine builds a paper with a seeded search, then tries same-mark swaps to improve its difficulty, topic, and question-type mix. I keep AI out of question selection: generated text can contain incorrect answers or syllabus errors. AI could help draft questions later, but a teacher should review them before they enter the bank.
 
-## Scope
-- One subject: Science, with Biology, Chemistry and Physics topic buckets.
-- A curated, illustrative bank of 36 tagged questions.
-- Total marks, difficulty mix, topic mix and question-type mix.
-- Breakdown of target versus achieved marks and a warning when the requested mix is not met.
-- Single-question swap that preserves the marks and leaves the other questions untouched whenever a suitable replacement exists.
-- Browser-only implementation; settings and paper are not saved to a server.
+## How constraints that don’t fit are handled
 
-## How the selection works
-The percentages represent **shares of total marks**, not shares of question count. This is more coherent when a 1-mark MCQ and a 5-mark long-answer question coexist. Each target is converted into a desired mark budget for each category.
+Each mix must total 100%; invalid settings receive an HTTP 400 error. The engine compares requested mark budgets with the bank and shows conflicts instead of silently changing the paper. For example, requesting 40 marks of Hard Biology gives the real conflict: `Hard Biology: requested 40 marks, only 26 available`. The status distinguishes **Exact match**, **Total met, mix approximate**, and **Total not reachable**.
 
-The generator uses a bounded randomized greedy search with multiple restarts:
-1. It builds a paper without reusing a question.
-2. At each step it considers questions that fit the remaining mark budget.
-3. It prefers questions that fill underrepresented difficulty/topic/type mark budgets, with a small random element to explore alternatives.
-4. It keeps the best paper found that exactly reaches the requested total marks.
-5. It compares the achieved marks with each requested category budget and displays the discrepancy.
+## Where it falls short and next steps
 
-This is a practical small-bank heuristic, not a proof that the globally optimal combination was found. If the bank cannot reach the requested total exactly, it reports the closest paper found rather than pretending the total is correct. A category deficit can occur even when the overall mark total is exact.
+The bank needs review against a specific syllabus. Selection is a fast heuristic, not a guaranteed optimum. Next I would add teacher-approved questions and stronger persistent storage for deployed use.
 
-## Conflict handling
-The generator does not silently edit the teacher's percentages. It reports target versus achieved marks for each category and shows a warning when a mix differs. For example, if the bank contains too few hard questions in a requested topic, the generated paper may still reach the total marks while missing the requested hard/topic share. The teacher can change the mix, use a different bank, or accept the visible best-effort paper.
+## One thing I’m proud of / one thing still weak
 
-A question swap keeps every other question fixed. It searches for an unused replacement with the same mark value and chooses the candidate that best improves the paper's constraint score. If no replacement of the same mark value exists, the tool explains that a marks-preserving swap is unavailable.
+**Proud of:** _(I’ll fill this in.)_
 
-## Why no generative AI in the core?
-The question bank is curated and stored as local JSON, so question wording and answer guides can be inspected. A language model could produce fluent but incorrect questions, mismatched answer keys, or content outside the intended level. An LLM is not needed to solve the main engineering problem: constrained selection.
+**Still weak:** _(I’ll fill this in.)_
 
-A future hybrid version could use an LLM to draft candidate questions, but would need to validate the question, answer, syllabus/topic, difficulty, type and mark value before adding it to the approved bank. The constraint engine should remain deterministic and independent of the model.
+## How to run and test
 
-## Limitations / what I would improve next
-- The bank is small and illustrative, not aligned to a named curriculum or validated by a subject teacher.
-- The search is heuristic and may miss a better combination. A future version could use integer programming/constraint programming for optimal selection.
-- The current percentages are mark-weighted. Some teachers may want question-count percentages or exact per-section quotas instead.
-- The answer key is a short guide, not a detailed marking rubric.
-- There is no persistence, authentication, syllabus upload, duplicate detection, or server-side PDF export.
-- Add automated tests for exact total marks, mix calculations, swap invariants, and deliberately infeasible pools; then expand the reviewed bank.
+```bash
+npm install
+npm run dev
+npm run build
+npm test
+npm run validate:bank
+```
 
-## Proud of
-The important part is the separation between the question bank, selection logic and UI, with target-versus-actual breakdowns rather than silently claiming the constraints were satisfied.
+Open http://localhost:5173. For a production server, run `npm start` after building.
 
-## Weakest part
-The small curated bank and heuristic search limit the range and optimality of papers. I would spend the next iteration on a larger teacher-reviewed bank and a formal constraint solver, not on adding more UI features.
+## Tech stack
 
-## Sample paper
-See [`sample-paper.md`](sample-paper.md). This is an example output format; regenerate the app to see a paper selected from the current bank.
+I use Vite, plain JavaScript and CSS, Node, Express, Vitest, Supertest, and a JSON file store (`data/papers.json`). Vercel builds the Vite app and routes API requests to the shared Express app.
+
+## Architecture
+
+The browser in `src/main.js` calls `/api/*`; it does not import the engine. `server/createApp.js` owns the HTTP routes and loads `src/questions.json`. Both the API and tests use the single selection engine in `src/engine.js`. `server/store.js` saves and loads papers as JSON.
+
+| Method | Path | Request | Result |
+|---|---|---|---|
+| GET | `/api/questions` | — | Question bank |
+| POST | `/api/generate` | `{ config, seed? }` | Paper, status, conflicts, deviations |
+| POST | `/api/swap` | `{ paper, questionId, config }` | Replacement, level used, or reason |
+| POST | `/api/papers` | `{ config, paper, seed?, title? }` | Saved paper and ID |
+| GET | `/api/papers/:id` | — | Saved paper or 404 |
+
+Invalid configs return 400 with a clear error.
+
+## AI usage disclosure
+
+I wrote the question text manually; teachers should review it before use. I used Cursor/LLM assistance for code structure, tests, and documentation—not for unverified bulk question generation.

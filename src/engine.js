@@ -35,7 +35,10 @@ export function validateConfig(config) {
   if (!config || typeof config.total !== "number" || !Number.isFinite(config.total)) {
     return { valid: false, error: "Total marks must be a valid number." };
   }
-  const total = Math.floor(config.total);
+  if (!Number.isInteger(config.total)) {
+    return { valid: false, error: "Total marks must be a whole number." };
+  }
+  const total = config.total;
   if (total < 5 || total > 60) {
     return { valid: false, error: "Choose a total between 5 and 60 marks." };
   }
@@ -234,6 +237,15 @@ export function computeDeviations(paper, config) {
   return deviations;
 }
 
+/** @param {{ exactTotal: boolean, deviations: Record<string, Record<string, { delta: number }>>, error?: string|null }} result */
+export function paperStatusLabel(result) {
+  if (result.error) return { label: "Invalid configuration", kind: "error" };
+  if (!result.exactTotal) return { label: "Total not reachable", kind: "error" };
+  const dev = totalDeviation(result.deviations);
+  if (dev <= 0.01) return { label: "Exact match", kind: "ok" };
+  return { label: "Total met, mix approximate", kind: "warn" };
+}
+
 /** @param {Record<string, Record<string, { delta: number }>>} deviations */
 function totalDeviation(deviations) {
   let err = 0;
@@ -415,32 +427,61 @@ export function generatePaper(bank, config, options = {}) {
  * @param {{ total: number, mixes: Record<string, Record<string, number>> }} config
  * @param {string} questionId
  */
+const SWAP_TIERS = [
+  {
+    level: "full",
+    label: "same marks, topic, difficulty and type",
+    match: (old, q) =>
+      q.marks === old.marks &&
+      q.topic === old.topic &&
+      q.difficulty === old.difficulty &&
+      q.type === old.type,
+  },
+  {
+    level: "type",
+    label: "same marks and question type",
+    match: (old, q) => q.marks === old.marks && q.type === old.type,
+  },
+  {
+    level: "marks",
+    label: "same marks only",
+    match: (old, q) => q.marks === old.marks,
+  },
+];
+
 export function swapQuestion(bank, paper, config, questionId) {
   const old = paper.find((q) => q.id === questionId);
   if (!old) {
-    return { paper, swapped: false, message: "Question not found in paper." };
+    return { paper, swapped: false, swapLevel: null, message: "Question not found in paper." };
   }
   const fixed = paper.filter((q) => q.id !== questionId);
   const used = new Set(fixed.map((q) => q.id));
-  const candidates = bank.filter((q) => !used.has(q.id) && q.marks === old.marks);
-  if (!candidates.length) {
+  const pool = bank.filter((q) => q.id !== old.id && !used.has(q.id));
+
+  for (const tier of SWAP_TIERS) {
+    const candidates = pool.filter((q) => tier.match(old, q));
+    if (!candidates.length) continue;
+    let best = null;
+    for (const candidate of candidates) {
+      const trial = paper.map((q) => (q.id === questionId ? candidate : q));
+      const dev = deviationScore(trial, config);
+      if (!best || dev < best.dev) best = { candidate, dev, trial };
+    }
     return {
-      paper,
-      swapped: false,
-      message: "No unused question with the same mark value is available.",
+      paper: best.trial,
+      swapped: true,
+      swapLevel: tier.level,
+      fromId: old.id,
+      toId: best.candidate.id,
+      message: `Swapped using ${tier.label}.`,
     };
   }
-  let best = null;
-  for (const candidate of candidates) {
-    const trial = paper.map((q) => (q.id === questionId ? candidate : q));
-    const dev = deviationScore(trial, config);
-    if (!best || dev < best.dev) best = { candidate, dev, trial };
-  }
+
   return {
-    paper: best.trial,
-    swapped: true,
-    fromId: old.id,
-    toId: best.candidate.id,
-    message: null,
+    paper,
+    swapped: false,
+    swapLevel: null,
+    message:
+      "No replacement found: no unused question shares the same marks (required to keep the total unchanged).",
   };
 }
