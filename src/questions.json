@@ -1,0 +1,1187 @@
+[
+  {
+    "id": "B01",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which cell structure controls most activities of a eukaryotic cell?",
+    "options": [
+      "Nucleus",
+      "Cell wall",
+      "Vacuole",
+      "Ribosome"
+    ],
+    "answer": "Nucleus"
+  },
+  {
+    "id": "B02",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Easy",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "State two functions of the cell membrane.",
+    "options": null,
+    "answer": "It controls movement of substances into and out of the cell; it separates the cell contents from the external environment."
+  },
+  {
+    "id": "B03",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which process releases usable energy from glucose in cells?",
+    "options": [
+      "Respiration",
+      "Photosynthesis",
+      "Transpiration",
+      "Diffusion"
+    ],
+    "answer": "Respiration"
+  },
+  {
+    "id": "B04",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Explain how the structure of a leaf helps it carry out photosynthesis.",
+    "options": null,
+    "answer": "Broad surface captures light; chloroplasts contain chlorophyll; stomata allow carbon dioxide to enter; veins transport water and sugars."
+  },
+  {
+    "id": "B05",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Hard",
+    "type": "Long Answer",
+    "marks": 5,
+    "prompt": "Explain how photosynthesis and cellular respiration are linked in an ecosystem.",
+    "options": null,
+    "answer": "Photosynthesis uses carbon dioxide and water with light to produce glucose and oxygen. Respiration uses glucose and oxygen to release energy, producing carbon dioxide and water. The products of one process are reactants of the other, although the processes occur in different pathways."
+  },
+  {
+    "id": "B06",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which blood component primarily transports oxygen?",
+    "options": [
+      "Red blood cells",
+      "Platelets",
+      "White blood cells",
+      "Plasma proteins"
+    ],
+    "answer": "Red blood cells"
+  },
+  {
+    "id": "B07",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "What is the role of decomposers in a food web?",
+    "options": null,
+    "answer": "They break down dead organisms and waste, returning nutrients to the environment."
+  },
+  {
+    "id": "B08",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "A plant is kept in darkness for an extended period. Which process is directly limited first?",
+    "options": [
+      "Photosynthesis",
+      "Water absorption",
+      "Mineral uptake",
+      "Diffusion through roots"
+    ],
+    "answer": "Photosynthesis"
+  },
+  {
+    "id": "B09",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "Long Answer",
+    "marks": 4,
+    "prompt": "Describe how energy moves through a simple food chain and why less energy is available at higher trophic levels.",
+    "options": null,
+    "answer": "Energy enters mainly through producers capturing sunlight and passes to consumers when organisms eat. At each transfer, energy is used in life processes and dissipated as heat; not all biomass is consumed or digested, so less energy reaches higher trophic levels."
+  },
+  {
+    "id": "B10",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Hard",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Distinguish between an inherited variation and an acquired characteristic, giving one example of each.",
+    "options": null,
+    "answer": "Inherited variation is passed through genes (for example, blood group). An acquired characteristic develops during life due to environment or experience (for example, a scar); it is not usually inherited genetically."
+  },
+  {
+    "id": "C01",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which particle has a negative electric charge?",
+    "options": [
+      "Electron",
+      "Proton",
+      "Neutron",
+      "Nucleus"
+    ],
+    "answer": "Electron"
+  },
+  {
+    "id": "C02",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Easy",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "Define an element and give one example.",
+    "options": null,
+    "answer": "An element is a pure substance made of one type of atom; examples include oxygen, iron or copper."
+  },
+  {
+    "id": "C03",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "What is the pH of a neutral aqueous solution at about 25°C?",
+    "options": [
+      "7",
+      "0",
+      "14",
+      "10"
+    ],
+    "answer": "7"
+  },
+  {
+    "id": "C04",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Explain one difference between a physical change and a chemical change.",
+    "options": null,
+    "answer": "A physical change does not create a new substance and is often a change of state or form. A chemical change forms one or more new substances with different properties."
+  },
+  {
+    "id": "C05",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Hard",
+    "type": "Long Answer",
+    "marks": 5,
+    "prompt": "Describe how you would distinguish an acid from an alkali using an indicator, and explain the expected observations.",
+    "options": null,
+    "answer": "Use an appropriate indicator such as universal indicator. An acid gives a colour associated with pH below 7; an alkali gives a colour associated with pH above 7. Include safe handling and compare the colour with the indicator scale."
+  },
+  {
+    "id": "C06",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which formula represents water?",
+    "options": [
+      "H₂O",
+      "CO₂",
+      "NaCl",
+      "O₂"
+    ],
+    "answer": "H₂O"
+  },
+  {
+    "id": "C07",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "Why is a chemical equation balanced?",
+    "options": null,
+    "answer": "To show conservation of atoms/mass: each element has the same number of atoms on both sides."
+  },
+  {
+    "id": "C08",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which change most clearly indicates that a chemical reaction may have occurred?",
+    "options": [
+      "A gas forms after two solutions mix",
+      "Ice melts",
+      "Sugar dissolves in water",
+      "Water evaporates"
+    ],
+    "answer": "A gas forms after two solutions mix"
+  },
+  {
+    "id": "C09",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "Long Answer",
+    "marks": 4,
+    "prompt": "Explain the difference between an atom, a molecule and a compound.",
+    "options": null,
+    "answer": "An atom is the smallest unit of an element that retains its chemical identity. A molecule is two or more atoms chemically bonded. A compound contains atoms of two or more different elements chemically bonded in fixed proportions; some molecules are not compounds, such as O₂."
+  },
+  {
+    "id": "C10",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Hard",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "A student obtains a low yield in a reaction. Give two possible reasons why the actual yield may be below the theoretical yield.",
+    "options": null,
+    "answer": "The reaction may be incomplete; side reactions may occur; product may be lost during transfer or purification; reactants may contain impurities."
+  },
+  {
+    "id": "P01",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "What is the SI unit of force?",
+    "options": [
+      "Newton",
+      "Joule",
+      "Watt",
+      "Pascal"
+    ],
+    "answer": "Newton"
+  },
+  {
+    "id": "P02",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Easy",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "What is meant by the speed of an object?",
+    "options": null,
+    "answer": "Distance travelled per unit time."
+  },
+  {
+    "id": "P03",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "If the resultant force on an object is zero, its acceleration is:",
+    "options": [
+      "Zero",
+      "Always increasing",
+      "Always decreasing",
+      "Equal to its mass"
+    ],
+    "answer": "Zero"
+  },
+  {
+    "id": "P04",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "A cyclist travels 120 m in 20 s. Calculate the average speed and show your working.",
+    "options": null,
+    "answer": "Average speed = distance ÷ time = 120 m ÷ 20 s = 6 m/s."
+  },
+  {
+    "id": "P05",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Hard",
+    "type": "Long Answer",
+    "marks": 5,
+    "prompt": "Explain, using Newton’s laws, why a passenger moves forward when a moving bus stops suddenly and how a seat belt reduces injury.",
+    "options": null,
+    "answer": "Inertia means the passenger’s body tends to keep moving when the bus stops. A seat belt provides the force that changes the passenger’s motion and spreads the stopping force over the body; increasing stopping time reduces the average force for a given change in momentum."
+  },
+  {
+    "id": "P06",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which form of energy is associated with an object because of its motion?",
+    "options": [
+      "Kinetic energy",
+      "Chemical energy",
+      "Nuclear energy",
+      "Elastic potential energy"
+    ],
+    "answer": "Kinetic energy"
+  },
+  {
+    "id": "P07",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "State the law of reflection of light.",
+    "options": null,
+    "answer": "The angle of incidence equals the angle of reflection; the incident ray, reflected ray and normal lie in the same plane."
+  },
+  {
+    "id": "P08",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Two resistors of 2 Ω and 4 Ω are connected in series. What is their total resistance?",
+    "options": [
+      "6 Ω",
+      "2 Ω",
+      "4 Ω",
+      "8 Ω"
+    ],
+    "answer": "6 Ω"
+  },
+  {
+    "id": "P09",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "Long Answer",
+    "marks": 4,
+    "prompt": "Describe an experiment to investigate how the length of a pendulum affects its period.",
+    "options": null,
+    "answer": "Use the same bob and small release angle; measure the time for multiple oscillations for several lengths; repeat and average; divide total time by oscillation count; control other variables and plot period against length."
+  },
+  {
+    "id": "P10",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Hard",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "A 12 V supply is connected across a 4 Ω resistor. Calculate the current and state the law used.",
+    "options": null,
+    "answer": "Ohm’s law: I = V/R = 12/4 = 3 A."
+  },
+  {
+    "id": "B11",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which organism is a producer in a typical food chain?",
+    "options": [
+      "Green plant",
+      "Rabbit",
+      "Fungus",
+      "Hawk"
+    ],
+    "answer": "Green plant"
+  },
+  {
+    "id": "B12",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "Why do most food chains contain only a few trophic levels?",
+    "options": null,
+    "answer": "Energy is lost at each transfer, so too little remains to support many additional trophic levels."
+  },
+  {
+    "id": "C11",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which method is most suitable for separating insoluble sand from water?",
+    "options": [
+      "Filtration",
+      "Distillation",
+      "Chromatography",
+      "Crystallisation"
+    ],
+    "answer": "Filtration"
+  },
+  {
+    "id": "C12",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "What information does the chemical symbol Na represent?",
+    "options": null,
+    "answer": "It represents the element sodium."
+  },
+  {
+    "id": "P11",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which instrument measures electric current?",
+    "options": [
+      "Ammeter",
+      "Voltmeter",
+      "Thermometer",
+      "Barometer"
+    ],
+    "answer": "Ammeter"
+  },
+  {
+    "id": "P12",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "What happens to the current through a fixed resistor if the voltage across it doubles, assuming temperature stays constant?",
+    "options": null,
+    "answer": "The current doubles, according to Ohm’s law."
+  },
+  {
+    "id": "B13",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which organelle is the site of aerobic respiration in eukaryotic cells?",
+    "options": [
+      "Mitochondrion",
+      "Nucleus",
+      "Golgi body",
+      "Ribosome"
+    ],
+    "answer": "Mitochondrion"
+  },
+  {
+    "id": "B14",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which gas is taken in by plants for photosynthesis?",
+    "options": [
+      "Carbon dioxide",
+      "Nitrogen",
+      "Hydrogen",
+      "Methane"
+    ],
+    "answer": "Carbon dioxide"
+  },
+  {
+    "id": "B15",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Easy",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "Name the four main types of teeth in humans.",
+    "options": null,
+    "answer": "Incisors, canines, premolars and molars."
+  },
+  {
+    "id": "B16",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which blood vessel carries blood away from the heart?",
+    "options": [
+      "Artery",
+      "Vein",
+      "Capillary",
+      "Lymph vessel"
+    ],
+    "answer": "Artery"
+  },
+  {
+    "id": "B17",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Explain why enzymes are described as biological catalysts.",
+    "options": null,
+    "answer": "They speed up biochemical reactions without being used up; they lower activation energy and are specific to particular substrates."
+  },
+  {
+    "id": "B18",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which adaptation helps xerophytes reduce water loss?",
+    "options": [
+      "Thick waxy cuticle",
+      "Broad thin leaves",
+      "Large air spaces",
+      "Hollow stems"
+    ],
+    "answer": "Thick waxy cuticle"
+  },
+  {
+    "id": "B19",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "Long Answer",
+    "marks": 4,
+    "prompt": "Describe the path of blood through the human heart in one complete circuit.",
+    "options": null,
+    "answer": "Deoxygenated blood enters the right atrium, passes to the right ventricle, is pumped to the lungs via the pulmonary artery, returns oxygenated to the left atrium, passes to the left ventricle, and is pumped to the body via the aorta."
+  },
+  {
+    "id": "B20",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "State two ways vaccination helps control infectious disease.",
+    "options": null,
+    "answer": "It stimulates memory cells for faster future response; it reduces susceptible individuals so spread is harder."
+  },
+  {
+    "id": "B21",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Hard",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "A student observes stomata mostly on the lower epidermis. Which inference is best supported?",
+    "options": [
+      "It reduces transpiration while allowing gas exchange",
+      "It increases photosynthesis rate only",
+      "It stops all water loss",
+      "It removes the need for roots"
+    ],
+    "answer": "It reduces transpiration while allowing gas exchange"
+  },
+  {
+    "id": "B22",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Hard",
+    "type": "Long Answer",
+    "marks": 5,
+    "prompt": "Explain how natural selection can lead to antibiotic resistance in bacteria.",
+    "options": null,
+    "answer": "Variation exists; antibiotics kill susceptible bacteria; resistant survivors reproduce; repeated use selects resistant strains; resistance alleles become common in the population over generations."
+  },
+  {
+    "id": "B23",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Hard",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Compare the functions of red blood cells and white blood cells.",
+    "options": null,
+    "answer": "Red blood cells transport oxygen using haemoglobin; white blood cells defend the body, e.g. by phagocytosis or antibody production."
+  },
+  {
+    "id": "B24",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which structure in a plant cell provides turgor support?",
+    "options": [
+      "Vacuole",
+      "Chloroplast",
+      "Centriole",
+      "Lysosome"
+    ],
+    "answer": "Vacuole"
+  },
+  {
+    "id": "B25",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Easy",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "Define the term habitat.",
+    "options": null,
+    "answer": "The place where an organism lives."
+  },
+  {
+    "id": "B26",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which hormone helps regulate blood sugar by promoting glucose uptake in cells?",
+    "options": [
+      "Insulin",
+      "Adrenaline",
+      "Thyroxine",
+      "Oestrogen"
+    ],
+    "answer": "Insulin"
+  },
+  {
+    "id": "B27",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "type": "Long Answer",
+    "marks": 4,
+    "prompt": "Explain the role of the nervous system in a reflex action.",
+    "options": null,
+    "answer": "A receptor detects a stimulus; sensory neurones carry impulses to the CNS; a relay neurone in the spinal cord coordinates; motor neurones carry impulses to an effector that produces a rapid response."
+  },
+  {
+    "id": "B28",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Hard",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "In a food web, removal of a top predator most directly increases population of its prey because:",
+    "options": [
+      "Predation pressure falls",
+      "Photosynthesis stops",
+      "Decomposers disappear",
+      "Nutrients leave the soil"
+    ],
+    "answer": "Predation pressure falls"
+  },
+  {
+    "id": "B29",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Hard",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Explain why monoculture farming can reduce biodiversity.",
+    "options": null,
+    "answer": "One crop dominates; fewer niches and food sources; pesticides may harm non-target species; genetic uniformity reduces resilience."
+  },
+  {
+    "id": "B30",
+    "subject": "Science",
+    "topic": "Biology",
+    "difficulty": "Hard",
+    "type": "Long Answer",
+    "marks": 5,
+    "prompt": "Describe how the kidney nephron contributes to osmoregulation.",
+    "options": null,
+    "answer": "Filtration in glomerulus; selective reabsorption in tubules returns glucose, ions and water; collecting duct adjusts water reabsorption under ADH control to produce concentrated or dilute urine."
+  },
+  {
+    "id": "C13",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which state symbol represents a solid?",
+    "options": [
+      "(s)",
+      "(l)",
+      "(g)",
+      "(aq)"
+    ],
+    "answer": "(s)"
+  },
+  {
+    "id": "C14",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which gas makes up most of the air?",
+    "options": [
+      "Nitrogen",
+      "Oxygen",
+      "Carbon dioxide",
+      "Argon only"
+    ],
+    "answer": "Nitrogen"
+  },
+  {
+    "id": "C15",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Easy",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "What is meant by a compound?",
+    "options": null,
+    "answer": "A substance containing atoms of two or more elements chemically bonded in fixed proportions."
+  },
+  {
+    "id": "C16",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which separation technique uses different solubilities in a solvent on paper?",
+    "options": [
+      "Chromatography",
+      "Filtration",
+      "Evaporation",
+      "Sieving"
+    ],
+    "answer": "Chromatography"
+  },
+  {
+    "id": "C17",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Balance the equation: H₂ + O₂ → H₂O (state whole-number coefficients).",
+    "options": null,
+    "answer": "2H₂ + O₂ → 2H₂O"
+  },
+  {
+    "id": "C18",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which particle is gained by a non-metal when it forms an ionic bond with a metal?",
+    "options": [
+      "Electron",
+      "Proton",
+      "Neutron",
+      "Nucleus"
+    ],
+    "answer": "Electron"
+  },
+  {
+    "id": "C19",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "Long Answer",
+    "marks": 4,
+    "prompt": "Describe the arrangement and movement of particles in a gas compared with a solid.",
+    "options": null,
+    "answer": "Gas particles are far apart with random rapid motion; solid particles are close in a fixed arrangement vibrating about positions; gas is compressible, solid is not."
+  },
+  {
+    "id": "C20",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "State the relative charge and mass of a neutron.",
+    "options": null,
+    "answer": "Neutron has no electric charge and relative mass about 1."
+  },
+  {
+    "id": "C21",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Hard",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "A metal reacts with dilute acid to produce hydrogen. Which conclusion is valid?",
+    "options": [
+      "The metal is above hydrogen in the reactivity series",
+      "The metal is below gold",
+      "The acid cannot ionise",
+      "No chemical change occurred"
+    ],
+    "answer": "The metal is above hydrogen in the reactivity series"
+  },
+  {
+    "id": "C22",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Hard",
+    "type": "Long Answer",
+    "marks": 5,
+    "prompt": "Explain how electrolysis of molten ionic compound MX produces elements at each electrode.",
+    "options": null,
+    "answer": "Positive ions migrate to cathode, gain electrons and are reduced to metal; negative ions migrate to anode, lose electrons and are oxidised; external circuit carries electrons; compound decomposes."
+  },
+  {
+    "id": "C23",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Hard",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Calculate the relative formula mass of CO₂. (C=12, O=16)",
+    "options": null,
+    "answer": "12 + 2×16 = 44."
+  },
+  {
+    "id": "C24",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which apparatus is used to measure volume of a liquid accurately in a lab?",
+    "options": [
+      "Burette or measuring cylinder",
+      "Tripod",
+      "Wire gauze",
+      "Crucible tongs"
+    ],
+    "answer": "Burette or measuring cylinder"
+  },
+  {
+    "id": "C25",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Easy",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "Define an acid in terms of pH.",
+    "options": null,
+    "answer": "A substance with pH less than 7 in aqueous solution."
+  },
+  {
+    "id": "C26",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which change increases the rate of reaction by providing more frequent collisions?",
+    "options": [
+      "Increasing concentration",
+      "Decreasing temperature",
+      "Adding inhibitor",
+      "Using larger container only"
+    ],
+    "answer": "Increasing concentration"
+  },
+  {
+    "id": "C27",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "type": "Long Answer",
+    "marks": 4,
+    "prompt": "Compare ionic and covalent bonding in terms of electron transfer or sharing.",
+    "options": null,
+    "answer": "Ionic: electrons transferred forming oppositely charged ions attracted electrostatically. Covalent: atoms share pairs of electrons to achieve stable outer shells."
+  },
+  {
+    "id": "C28",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Hard",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "When copper(II) oxide reacts with dilute sulfuric acid, the salt formed is:",
+    "options": [
+      "Copper(II) sulfate",
+      "Copper metal",
+      "Sulfur dioxide only",
+      "Copper hydroxide gas"
+    ],
+    "answer": "Copper(II) sulfate"
+  },
+  {
+    "id": "C29",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Hard",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Explain why aluminium is extracted by electrolysis but iron is obtained by reduction with carbon.",
+    "options": null,
+    "answer": "Aluminium is very reactive; carbon cannot reduce its oxide at practical cost; electrolysis forces reduction. Iron oxide is reduced by carbon/carbon monoxide in the blast furnace."
+  },
+  {
+    "id": "C30",
+    "subject": "Science",
+    "topic": "Chemistry",
+    "difficulty": "Hard",
+    "type": "Long Answer",
+    "marks": 5,
+    "prompt": "Describe the test for carbon dioxide and explain the chemical basis of the observation.",
+    "options": null,
+    "answer": "Bubble gas through limewater; turns milky due to formation of insoluble calcium carbonate when CO₂ reacts with calcium hydroxide."
+  },
+  {
+    "id": "P13",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "What is the SI unit of power?",
+    "options": [
+      "Watt",
+      "Joule",
+      "Newton",
+      "Ohm"
+    ],
+    "answer": "Watt"
+  },
+  {
+    "id": "P14",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which quantity is scalar?",
+    "options": [
+      "Speed",
+      "Velocity",
+      "Force",
+      "Displacement"
+    ],
+    "answer": "Speed"
+  },
+  {
+    "id": "P15",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Easy",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "Define acceleration.",
+    "options": null,
+    "answer": "Rate of change of velocity."
+  },
+  {
+    "id": "P16",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "A 10 N force acts on 2 kg mass. What is the acceleration?",
+    "options": [
+      "5 m/s²",
+      "20 m/s²",
+      "0.2 m/s²",
+      "12 m/s²"
+    ],
+    "answer": "5 m/s²"
+  },
+  {
+    "id": "P17",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Calculate work done when a 50 N force moves an object 4 m in the force direction.",
+    "options": null,
+    "answer": "W = F × s = 50 × 4 = 200 J."
+  },
+  {
+    "id": "P18",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which device converts electrical energy to kinetic energy in a fan?",
+    "options": [
+      "Motor",
+      "Generator",
+      "Transformer",
+      "Fuse"
+    ],
+    "answer": "Motor"
+  },
+  {
+    "id": "P19",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "Long Answer",
+    "marks": 4,
+    "prompt": "Describe the energy transfers when a ball is dropped and bounces.",
+    "options": null,
+    "answer": "Gravitational potential to kinetic as it falls; on impact some kinetic becomes thermal/sound and deforms ball; remaining kinetic lifts it again as elastic/gravitational potential."
+  },
+  {
+    "id": "P20",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "State one difference between mass and weight.",
+    "options": null,
+    "answer": "Mass is the amount of matter (kg); weight is the gravitational force (N) on that mass."
+  },
+  {
+    "id": "P21",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Hard",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Two identical bulbs in parallel on a 6 V battery each have:",
+    "options": [
+      "Full battery p.d. across each",
+      "Half the battery p.d.",
+      "Zero current",
+      "Double the resistance of one alone"
+    ],
+    "answer": "Full battery p.d. across each"
+  },
+  {
+    "id": "P22",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Hard",
+    "type": "Long Answer",
+    "marks": 5,
+    "prompt": "Explain why a satellite in circular orbit has changing velocity but constant speed.",
+    "options": null,
+    "answer": "Speed is magnitude of velocity; direction changes continuously due to centripetal force toward Earth; velocity is a vector so changing direction means changing velocity even if speed is constant."
+  },
+  {
+    "id": "P23",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Hard",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "A 2 kg object has momentum 10 kg·m/s. Calculate its speed.",
+    "options": null,
+    "answer": "p = mv so v = p/m = 10/2 = 5 m/s."
+  },
+  {
+    "id": "P24",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Easy",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Which colour of visible light has the longest wavelength?",
+    "options": [
+      "Red",
+      "Violet",
+      "Blue",
+      "Green"
+    ],
+    "answer": "Red"
+  },
+  {
+    "id": "P25",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Easy",
+    "type": "Short Answer",
+    "marks": 2,
+    "prompt": "What is the function of a fuse in a domestic circuit?",
+    "options": null,
+    "answer": "It breaks the circuit if current exceeds a safe value, preventing overheating and fire."
+  },
+  {
+    "id": "P26",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "Sound travels fastest in:",
+    "options": [
+      "Solids",
+      "Vacuum",
+      "Thin air at high altitude only",
+      "All media equally"
+    ],
+    "answer": "Solids"
+  },
+  {
+    "id": "P27",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "type": "Long Answer",
+    "marks": 4,
+    "prompt": "Describe how to plot a distance–time graph from experimental data and find speed.",
+    "options": null,
+    "answer": "Measure distance at known times; plot distance on y-axis, time on x; draw best line; speed equals gradient of straight section."
+  },
+  {
+    "id": "P28",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Hard",
+    "type": "MCQ",
+    "marks": 1,
+    "prompt": "A transformer with 100 turns primary and 500 turns secondary is step-up. If primary p.d. is 12 V, secondary is approximately:",
+    "options": [
+      "60 V",
+      "2.4 V",
+      "12 V",
+      "500 V"
+    ],
+    "answer": "60 V"
+  },
+  {
+    "id": "P29",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Hard",
+    "type": "Short Answer",
+    "marks": 3,
+    "prompt": "Explain why lubricating a machine reduces wasted energy.",
+    "options": null,
+    "answer": "Reduces friction so less work becomes thermal energy at surfaces; more input energy does useful work."
+  },
+  {
+    "id": "P30",
+    "subject": "Science",
+    "topic": "Physics",
+    "difficulty": "Hard",
+    "type": "Long Answer",
+    "marks": 5,
+    "prompt": "Using ray diagrams, explain how a converging lens forms a real image of a distant object.",
+    "options": null,
+    "answer": "Parallel rays refract through lens to meet at focal plane; inverted reduced real image forms on screen side; object beyond 2F gives image between F and 2F."
+  }
+]

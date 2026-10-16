@@ -1,0 +1,14 @@
+{
+  "name": "paperpilot",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate:bank": "node scripts/validate-bank.js",
+    "sample-paper": "node scripts/generate-sample-paper.mjs"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
+}
