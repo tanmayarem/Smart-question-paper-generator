@@ -1,53 +1,57 @@
 # PaperPilot
 
-I built PaperPilot to make printable Science exams from a curated question bank. I use rules, not AI, to select questions so marks and constraints stay visible and testable.
+I built PaperPilot to generate printable Science exams from a curated question bank. Its deterministic engine checks marks, topics, difficulty, and question type.
 
 ## Approach and why
 
-The engine builds a paper with a seeded search, then tries same-mark swaps to improve its difficulty, topic, and question-type mix. I keep AI out of question selection: generated text can contain incorrect answers or syllabus errors. AI could help draft questions later, but a teacher should review them before they enter the bank.
+Seeded search and same-mark swaps find a paper that fits the requested constraints. AI does not select questions, so results and conflicts remain explainable.
 
 ## How constraints that don’t fit are handled
 
-Each mix must total 100%; invalid settings receive an HTTP 400 error. The engine compares requested mark budgets with the bank and shows conflicts instead of silently changing the paper. For example, requesting 40 marks of Hard Biology gives the real conflict: `Hard Biology: requested 40 marks, only 26 available`. The status distinguishes **Exact match**, **Total met, mix approximate**, and **Total not reachable**.
+Mixes must total 100%. If the bank cannot satisfy a request, PaperPilot shows why and labels the result **Exact match**, **Total met, mix approximate**, or **Total not reachable**. For example: `Hard Biology: requested 40 marks, only 26 available`.
 
-## Where it falls short and next steps
+### Where it falls short and next steps
 
-The bank needs review against a specific syllabus. Selection is a fast heuristic, not a guaranteed optimum. Next I would add more teacher-approved questions and improve the mix search.
+The current version focuses on generating constraint-aware question papers, explaining conflicts, and allowing individual questions to be swapped without regenerating the entire paper. Papers can be printed or exported through the browser's print-to-PDF functionality, but persistent save/load functionality is not currently supported. With more time, I would add a hosted database so teachers could save, retrieve, and manage previously generated papers across sessions.
 
 ## One thing I’m proud of / one thing still weak
 
-**Proud of:** _(I’ll fill this in.)_
+**Proud of:** Constraint trade-offs are visible, and I can replace one question without losing the rest of the paper.
 
-**Still weak:** _(I’ll fill this in.)_
+**Still weak:** The small question bank needs teacher review, and the fast search cannot guarantee the optimal mix.
 
 ## How to run and test
 
 ```bash
 npm install
 npm run dev
-npm run build
 npm test
 npm run validate:bank
+npm run build
 ```
 
-Open http://localhost:5173. For a production server, run `npm start` after building.
+Open http://localhost:5173. Use **Print paper** to print or export a PDF.
 
-## Tech stack
+To draft questions, set your API key in the environment (PowerShell example), then run:
 
-I use Vite, plain JavaScript and CSS, Node, Express, Vitest, and Supertest. Vercel builds the Vite app and routes API requests to the shared Express app. Papers are generated in the browser session; there is no save feature.
+```powershell
+$env:OPENAI_API_KEY = "your-api-key"
+npm run draft-questions -- 3 Biology Medium MCQ
+npm run approve-questions
+```
 
-## Architecture
+The script uses OpenAI's API (`gpt-4o-mini` by default; set `OPENAI_MODEL` to change it). Drafts go only to ignored `data/pending.json`. The CLI lets me approve, edit, reject, or skip each one; approval validates the complete proposed bank before adding it. I review drafts for accuracy and syllabus fit.
 
-The browser in `src/main.js` calls `/api/*`; it does not import the engine. `server/createApp.js` owns the HTTP routes and loads `src/questions.json`. Both the API and tests use the single selection engine in `src/engine.js`.
+## Tech stack and architecture
 
-| Method | Path | Request | Result |
-|---|---|---|---|
-| GET | `/api/questions` | — | Question bank |
-| POST | `/api/generate` | `{ config, seed? }` | Paper, status, conflicts, deviations |
-| POST | `/api/swap` | `{ paper, questionId, config }` | Replacement, level used, or reason |
+Vite, vanilla JavaScript/CSS, Node, Express, and Vitest. The browser calls `/api/*`; `server/createApp.js` uses `src/engine.js` and `src/questions.json`.
 
-Invalid configs return 400 with a clear error.
+| Method | Path | Purpose |
+|---|---|---|
+| GET | `/api/questions` | Read the question bank |
+| POST | `/api/generate` | Generate a paper from `{ config, seed? }` |
+| POST | `/api/swap` | Swap a question using `{ paper, questionId, config }` |
 
 ## AI usage disclosure
 
-I wrote the question text manually; teachers should review it before use. I used Cursor/LLM assistance for code structure, tests, and documentation—not for unverified bulk question generation.
+**AI drafts, human approves, engine selects deterministically.** AI only drafts candidates; I review them, and the validator gates bank updates.
