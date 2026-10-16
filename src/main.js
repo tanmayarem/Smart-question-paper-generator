@@ -38,7 +38,6 @@ const state = {
   lastResult: null,
   seed: 42,
   showAnswerKey: false,
-  savedId: null,
 };
 
 const $ = (id) => document.getElementById(id);
@@ -317,28 +316,6 @@ async function swapQuestion(id) {
   }
 }
 
-async function savePaper() {
-  if (!state.paper.length || !state.lastConfig) return;
-  try {
-    const saved = await api("/api/papers", {
-      method: "POST",
-      body: JSON.stringify({
-        config: state.lastConfig,
-        paper: state.paper,
-        seed: state.seed,
-        title: $("exam-name").value.trim(),
-      }),
-    });
-    state.savedId = saved.id;
-    $("status").insertAdjacentHTML(
-      "afterbegin",
-      `<div class="notice ok">Paper saved (id: ${esc(saved.id)}).</div>`,
-    );
-  } catch (e) {
-    $("status").innerHTML = `<div class="notice error">${esc(e.message)}</div>`;
-  }
-}
-
 function init() {
   buildMixInputs();
   $("generate").addEventListener("click", () => {
@@ -361,7 +338,6 @@ function init() {
     state.showAnswerKey = prev;
     renderPaper();
   });
-  $("save").addEventListener("click", savePaper);
   $("total").addEventListener("input", updateSums);
 
   generate().catch(() => {

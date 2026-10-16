@@ -1,7 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import fs from "fs";
-import os from "os";
-import path from "path";
+import { describe, it, expect, beforeEach } from "vitest";
 import request from "supertest";
 import { createApp } from "../server/createApp.js";
 
@@ -15,16 +12,10 @@ const defaultConfig = {
 };
 
 describe("API", () => {
-  let tmpDir;
   let app;
 
   beforeEach(() => {
-    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "paperpilot-"));
-    app = createApp({ dataDir: tmpDir });
-  });
-
-  afterEach(() => {
-    fs.rmSync(tmpDir, { recursive: true, force: true });
+    app = createApp();
   });
 
   it("POST /api/generate rejects invalid mix with 400", async () => {
@@ -63,22 +54,10 @@ describe("API", () => {
     expect(swap.body.swapped).toBe(true);
     expect(swap.body.swapLevel).toMatch(/^(full|type|marks)$/);
     expect(swap.body.message).toMatch(/Swapped using/);
+
   });
 
-  it("POST /api/papers then GET /api/papers/:id round-trips", async () => {
-    const gen = await request(app)
-      .post("/api/generate")
-      .send({ config: defaultConfig, seed: 3 });
-    const save = await request(app)
-      .post("/api/papers")
-      .send({ config: defaultConfig, paper: gen.body.paper, seed: 3, title: "Test" });
-    expect(save.status).toBe(201);
-    expect(save.body.id).toBeTruthy();
-    const load = await request(app).get(`/api/papers/${save.body.id}`);
-    expect(load.status).toBe(200);
-    expect(load.body.paper).toHaveLength(gen.body.paper.length);
-    expect(load.body.config.total).toBe(20);
-
+  it("GET /api/questions returns the question bank", async () => {
     const questions = await request(app).get("/api/questions");
     expect(questions.status).toBe(200);
     expect(questions.body.count).toBeGreaterThan(0);

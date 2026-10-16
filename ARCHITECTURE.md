@@ -10,12 +10,9 @@ Express (server/createApp.js)
     │  imports
     ▼
 Pure engine (src/engine.js)     Question bank (src/questions.json)
-    │
-    ▼
-Paper store (data/papers.json)  on POST/GET /api/papers
 ```
 
-The UI never imports the engine. The API and Vitest engine tests share the same module so selection rules stay in one place.
+The UI never imports the engine. The API and Vitest engine tests share the same module so selection rules stay in one place. Generated papers remain in the browser session; there is no persistence layer.
 
 ## Engine
 

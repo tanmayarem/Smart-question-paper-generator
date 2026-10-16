@@ -12,7 +12,7 @@ Each mix must total 100%; invalid settings receive an HTTP 400 error. The engine
 
 ## Where it falls short and next steps
 
-The bank needs review against a specific syllabus. Selection is a fast heuristic, not a guaranteed optimum. Next I would add teacher-approved questions and stronger persistent storage for deployed use.
+The bank needs review against a specific syllabus. Selection is a fast heuristic, not a guaranteed optimum. Next I would add more teacher-approved questions and improve the mix search.
 
 ## One thing I’m proud of / one thing still weak
 
@@ -34,19 +34,17 @@ Open http://localhost:5173. For a production server, run `npm start` after build
 
 ## Tech stack
 
-I use Vite, plain JavaScript and CSS, Node, Express, Vitest, Supertest, and a JSON file store (`data/papers.json`). Vercel builds the Vite app and routes API requests to the shared Express app.
+I use Vite, plain JavaScript and CSS, Node, Express, Vitest, and Supertest. Vercel builds the Vite app and routes API requests to the shared Express app. Papers are generated in the browser session; there is no save feature.
 
 ## Architecture
 
-The browser in `src/main.js` calls `/api/*`; it does not import the engine. `server/createApp.js` owns the HTTP routes and loads `src/questions.json`. Both the API and tests use the single selection engine in `src/engine.js`. `server/store.js` saves and loads papers as JSON.
+The browser in `src/main.js` calls `/api/*`; it does not import the engine. `server/createApp.js` owns the HTTP routes and loads `src/questions.json`. Both the API and tests use the single selection engine in `src/engine.js`.
 
 | Method | Path | Request | Result |
 |---|---|---|---|
 | GET | `/api/questions` | — | Question bank |
 | POST | `/api/generate` | `{ config, seed? }` | Paper, status, conflicts, deviations |
 | POST | `/api/swap` | `{ paper, questionId, config }` | Replacement, level used, or reason |
-| POST | `/api/papers` | `{ config, paper, seed?, title? }` | Saved paper and ID |
-| GET | `/api/papers/:id` | — | Saved paper or 404 |
 
 Invalid configs return 400 with a clear error.
 

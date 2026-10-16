@@ -9,13 +9,12 @@ import {
   computeDeviations,
   paperStatusLabel,
 } from "../src/engine.js";
-import { createPaperStore } from "./store.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.join(__dirname, "..");
 
 /**
- * @param {{ bank?: object[], dataDir?: string, staticDir?: string|null }} [options]
+ * @param {{ bank?: object[], staticDir?: string|null }} [options]
  */
 export function createApp(options = {}) {
   const app = express();
@@ -24,7 +23,6 @@ export function createApp(options = {}) {
   const bankPath = path.join(rootDir, "src", "questions.json");
   const bank = options.bank ?? JSON.parse(fs.readFileSync(bankPath, "utf8"));
   const questionsById = new Map(bank.map((question) => [question.id, question]));
-  const store = createPaperStore(options.dataDir ?? path.join(rootDir, "data"));
 
   function validatePaper(paper) {
     if (!Array.isArray(paper) || paper.length === 0) {
@@ -90,32 +88,6 @@ export function createApp(options = {}) {
       deviations,
       status,
     });
-  });
-
-  app.post("/api/papers", (req, res) => {
-    const { config, paper, seed, title } = req.body ?? {};
-    const validation = validateConfig(config);
-    if (!validation.valid) {
-      return res.status(400).json({ error: validation.error });
-    }
-    const paperValidation = validatePaper(paper);
-    if (paperValidation.error) {
-      return res.status(400).json({ error: paperValidation.error });
-    }
-    if (seed != null && !Number.isSafeInteger(seed)) {
-      return res.status(400).json({ error: "Seed must be a whole number." });
-    }
-    if (title != null && typeof title !== "string") {
-      return res.status(400).json({ error: "Title must be a string." });
-    }
-    const saved = store.save({ config, paper: paperValidation.paper, seed, title });
-    res.status(201).json(saved);
-  });
-
-  app.get("/api/papers/:id", (req, res) => {
-    const saved = store.load(req.params.id);
-    if (!saved) return res.status(404).json({ error: "Paper not found." });
-    res.json(saved);
   });
 
   const staticDir = options.staticDir ?? null;
