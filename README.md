@@ -45,3 +45,7 @@ I use Vite, vanilla JavaScript and CSS, Node, Express, and Vitest. The browser c
 ## AI usage disclosure
 
 I wrote the question text manually; teachers should review it before use. I used LLM assistance for code structure, tests, and documentation—not for unverified bulk question generation.
+
+
+## Deployment Link
+https://smart-question-paper-generator-lac.vercel.app/
